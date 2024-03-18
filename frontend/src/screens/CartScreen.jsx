@@ -29,7 +29,7 @@ const CartScreen = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=/shipping");
+    navigate("/shipping"); //????navigate("/login?redirect/shipping"); It is not wroking like this!?????
   };
 
   return (
