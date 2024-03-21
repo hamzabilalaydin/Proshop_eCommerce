@@ -10,6 +10,7 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader.jsx";
@@ -33,7 +34,17 @@ const ProductScreen = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
+    navigate("/");
+    toast(`✅${product.name} added to your cart`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
