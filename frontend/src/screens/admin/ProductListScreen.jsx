@@ -21,7 +21,7 @@ const ProductListScreen = () => {
   const [createProduct, { isLoading: loadingCreate }] =
     useCreateProductMutation();
 
-  const [deleteProduct, { isLoading: LoadingDelete }] =
+  const [deleteProduct, { isLoading: loadingDelete }] =
     useDeleteProductMutation();
 
   const deleteHandler = async (id) => {
@@ -61,7 +61,7 @@ const ProductListScreen = () => {
       </Row>
 
       {loadingCreate && <Loader />}
-      {LoadingDelete && <Loader />}
+      {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
       ) : error ? (
