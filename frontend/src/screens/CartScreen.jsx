@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../slices/cartSlice.js";
+import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
   const navigate = useNavigate();
@@ -20,22 +20,24 @@ const CartScreen = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const addToCartHandler = async (product, qty) => {
+  // NOTE: no need for an async function here as we are not awaiting the
+  // resolution of a Promise
+  const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
   };
 
-  const removeFromCartHandler = async (id) => {
+  const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
-    navigate("/shipping"); //????navigate("/login?redirect/shipping"); It is not wroking like this!?????
+    navigate("/login?redirect=/shipping");
   };
 
   return (
     <Row>
       <Col md={8}>
-        <h1 style={{ marginBottom: "20px " }}>Shopping Cart</h1>
+        <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
             Your cart is empty <Link to="/">Go Back</Link>
@@ -93,7 +95,7 @@ const CartScreen = () => {
             <ListGroup.Item>
               <h2>
                 Subtotal (
-                {cartItems.reduce((acc, item) => acc + item.qty, 0)}) Items
+                {cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
               </h2>
               $
               {cartItems

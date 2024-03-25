@@ -22,7 +22,7 @@ const LoginScreen = () => {
 
   const { search } = useLocation();
   const sp = new URLSearchParams(search);
-  const redirect = sp.get(" redirect ") || "/";
+  const redirect = sp.get("redirect") || "/";
 
   useEffect(() => {
     if (userInfo) {
@@ -50,6 +50,7 @@ const LoginScreen = () => {
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
+            autoFocus
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
