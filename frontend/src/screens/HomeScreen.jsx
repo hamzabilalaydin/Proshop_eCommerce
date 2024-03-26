@@ -1,5 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Product from "../components/Product";
 import Loader from "../components/Loader.jsx";
 import Message from "../components/Message.jsx";
@@ -24,6 +25,11 @@ const HomeScreen = () => {
       ) : (
         <>
           <h1>Latest Products</h1>
+          {keyword && (
+            <Link to="/" className="btn btn-light">
+              Go Back
+            </Link>
+          )}
           <Row>
             {data.products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
