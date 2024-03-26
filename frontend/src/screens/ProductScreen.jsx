@@ -181,7 +181,7 @@ const ProductScreen = () => {
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
-                    <strong>{review.name.substr(0, 2)}*******</strong>
+                    <strong>{review.name.substr(0, 3)}*******</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
                     <p>{review.comment}</p>
