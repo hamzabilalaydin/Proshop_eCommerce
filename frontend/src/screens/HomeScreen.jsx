@@ -5,6 +5,8 @@ import Product from "../components/Product";
 import Loader from "../components/Loader.jsx";
 import Message from "../components/Message.jsx";
 import Paginate from "../components/Paginate.jsx";
+import ProductCarousel from "../components/ProductCarousel.jsx";
+import Meta from "../components/Meta.jsx";
 import { useGetProductsQuery } from "../slices/productsApiSlice.js";
 
 const HomeScreen = () => {
@@ -24,11 +26,14 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+          <Meta />
           <h1>Latest Products</h1>
-          {keyword && (
+          {keyword ? (
             <Link to="/" className="btn btn-light">
               Go Back
             </Link>
+          ) : (
+            <ProductCarousel />
           )}
           <Row>
             {data.products.map((product) => (
